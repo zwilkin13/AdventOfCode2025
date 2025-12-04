@@ -8,8 +8,8 @@ def crack_that_fn_safe_man(input_file):
         zero_count = 0
         dial = 50
         for turn in turns:
-            if turn[0] == 'R':  dial += int(turn[1:])   # Right Turn
-            else:               dial -= int(turn[1:])   # Left Turn
+            turn_num = turn[1:]
+            dial += int(turn_num) if turn[0] == 'R' else -int(turn_num)
             while not (0 <= dial <= 99):
                 dial = 100 - abs(dial) if dial < 0 else dial - 100
             if dial == 0:       zero_count += 1
